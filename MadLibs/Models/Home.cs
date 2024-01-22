@@ -14,5 +14,8 @@ namespace MadLib.Models
         public string Ten {get; set;}
         public string Eleven {get; set;}
         public string Twelve {get; set;}
+        public string Thirteen {get; set;}
+        public string Fourteen {get; set;}
+        public string Fifteen {get; set;}
     }
 }

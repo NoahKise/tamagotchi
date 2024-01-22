@@ -23,6 +23,8 @@ namespace ProjectName
                 pattern: "{controller=Home}/{action=Index}/{id?}"
             );
 
+            app.UseStaticFiles();
+
             app.Run();
         }
     }
