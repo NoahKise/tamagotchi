@@ -15,6 +15,10 @@
       <h2>
         <a href="/pets/@pet.Id">@pet.Name</a>
       </h2>
+      @if (pet.Happiness == 0 || pet.Hunger == 10 || pet.Energy == 0)
+      {
+        <p>Deceased :(</p>
+      }
       <br>
       
     }

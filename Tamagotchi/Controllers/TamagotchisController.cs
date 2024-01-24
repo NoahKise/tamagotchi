@@ -28,11 +28,40 @@ namespace Tamagotchi.Controllers
       return RedirectToAction("Index");
     }
 
-     [HttpGet("/pets/{id}")]
+    [HttpGet("/pets/{id}")]
     public ActionResult Details(int id)
     {
       Pet foundPet = Pet.Find(id);
       return View(foundPet);
+    }
+
+    [HttpPost("/pets/{id}")]
+    public ActionResult HandlePetAction(int id, string action)
+    {
+      Pet pet = Pet.Find(id);
+
+      if (pet == null)
+      {
+        return NotFound();
+      }
+
+      switch (action)
+      {
+        case "attention":
+          pet.Attention();
+          break;
+        case "feed":
+          pet.Feed();
+          break;
+        case "rest":
+          pet.Rest();
+          break;
+
+        default:
+          return BadRequest("Invalid action");
+      }
+
+      return RedirectToAction("Details", new { id = pet.Id });
     }
 
   }
