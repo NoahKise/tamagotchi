@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   @using Tamagotchi.Models;
 
   <h1>Tamagotchis!</h1>
@@ -34,7 +35,8 @@
         <img class="tamagotchiImage" src="~/images/tama.svg" alt="tamagotchi" style="background-color: @pet.Color;" />
         @if (pet.Happiness == 0 || pet.Hunger == 10 || pet.Energy == 0)
         {
-          <p>Deceased</p>
+            <p>I am dead.
+            YOU LET ME DIE!!!!</p>
         }
       </div>
       <br>
@@ -45,10 +47,14 @@
   <button><a href='/'>Home Page</a></button>
 
   <form id="timeForm" action="/pets/passTime" method="post">
-    <button type="submit">Time</button>
   </form>
-
   </div>
+   <script>
+    // Set up an interval to submit the form every 10 seconds
+    setInterval(function () {
+      document.getElementById('timeForm').submit();
+    }, 10000); // 10000 milliseconds = 10 seconds
+  </script>
 </body>
 
 </html>
