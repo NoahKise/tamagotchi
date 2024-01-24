@@ -19,5 +19,23 @@ namespace Tamagotchi.Tests
       Pet newPet = new("brad", "yellow", 2, 2, 2);
       Assert.AreEqual(typeof(Pet), newPet.GetType());
     }
+
+    [TestMethod]
+    public void GetPetDetails_ReturnsPetDetails_String()
+    {
+      string name = "brad";
+      string color = "yellow";
+      int happiness = 2;
+      int hunger = 2;
+      int energy = 2;
+      Pet brad = new(name, color, happiness, hunger, energy);
+      Assert.AreEqual(brad.Name, name);
+      Assert.AreEqual(brad.Color, color);
+      Assert.AreEqual(brad.Happiness, happiness);
+      Assert.AreEqual(brad.Hunger, hunger);
+      Assert.AreEqual(brad.Energy, energy);
+
+    }
+
   }
 }
