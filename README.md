@@ -23,3 +23,9 @@
 
 * Stretch Goals
   * Real Time
+
+* After Lunch
+  * Add personality selector
+  * Format pets page to use cards, include color
+  * Add image to details page
+  * Implement real time
