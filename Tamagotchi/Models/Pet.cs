@@ -30,22 +30,51 @@ namespace Tamagotchi.Models
 
         public void Feed()
         {
-            this.Hunger -= 1;
+            if (this.Hunger > 0)
+            {
+                this.Hunger -= 1;
+            }
+
         }
 
         public void Attention()
         {
-            this.Happiness += 1;
+            if (this.Happiness < 10)
+            {
+                this.Happiness += 1;
+            }
         }
 
         public void Rest()
         {
-            this.Energy += 1;
+            if (this.Energy < 10)
+            {
+                this.Energy += 1;
+            }
         }
 
         public void Die()
         {
             this.IsAlive = false;
+        }
+
+        public void passTime()
+        {
+            foreach (Pet pet in _instances)
+            {
+                if (pet.Happiness > 0)
+                {
+                    pet.Happiness -= 1;
+                }
+                if (pet.Hunger < 10)
+                {
+                    pet.Hunger += 1;
+                }
+                if (pet.Energy > 0)
+                {
+                    pet.Energy -= 1;
+                }
+            }
         }
 
         public static List<Pet> GetAll()
@@ -59,7 +88,7 @@ namespace Tamagotchi.Models
 
         public static Pet Find(int searchID)
         {
-            return _instances[searchID-1];
+            return _instances[searchID - 1];
         }
 
     }

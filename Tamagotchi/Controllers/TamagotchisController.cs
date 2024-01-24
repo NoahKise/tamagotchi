@@ -64,5 +64,16 @@ namespace Tamagotchi.Controllers
       return RedirectToAction("Details", new { id = pet.Id });
     }
 
+    [HttpPost("/pets/passTime")]
+    public ActionResult PassTime()
+    {
+      Pet firstPet = Pet.GetAll()[0];
+      if (firstPet != null)
+      {
+        firstPet.passTime();
+      }
+      return RedirectToAction("Index");
+    }
+
   }
 }

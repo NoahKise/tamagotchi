@@ -17,12 +17,17 @@
       </h2>
       @if (pet.Happiness == 0 || pet.Hunger == 10 || pet.Energy == 0)
       {
-        <p>Deceased :(</p>
+        <p>Deceased</p>
       }
       <br>
       
     }
     <a href="/pets/new">Add a new pet.</a>
+
+    <form id="timeForm" action="/pets/passTime" method="post">
+        <button type="submit">Time</button>
+    </form>
+
   </div>
 </body>
 
