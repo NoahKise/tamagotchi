@@ -1,3 +1,37 @@
-input {
-    background-color: aqua;
+.petCard {
+    padding: 10px;
+    margin: 10px;
+    width: 50vw;
+    border: 2px solid black;
+    columns: 2;
+    border-radius: 10px;
+    height: 200px;
+}
+
+@font-face {
+    font-family: retro;
+    src: url(../fonts/Retro\ Gaming.ttf);
+}
+
+body {
+    font-family: retro;
+}
+
+.tamagotchiImage {
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#picAndStatus {
+    float: right;
+    text-align: center;
+}
+
+.petName {
+    text-decoration: underline;
+}
+
+button {
+    border-radius: 10px;
 }
