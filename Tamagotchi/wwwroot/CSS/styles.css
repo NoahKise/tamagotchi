@@ -1,11 +1,11 @@
 .petCard {
     padding: 10px;
     margin: 10px;
-    width: 50vw;
-    border: 2px solid black;
-    columns: 2;
+    width: 350px;
+    border: 15px solid #c7a008;
     border-radius: 10px;
-    height: 200px;
+    height: 500px;
+    background-color: #ffcb05;
 }
 
 @font-face {
@@ -18,20 +18,82 @@ body {
 }
 
 .tamagotchiImage {
-    width: 150px;
-    border: 2px solid black;
-    border-radius: 10px;
+    width: 298px;
+    height: 220px;
+    border: 5px solid #c7a008;
+    border-style:groove ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    box-shadow: 3px 4px 4px black;
 }
 
 #picAndStatus {
-    float: right;
     text-align: center;
 }
 
 .petName {
     text-decoration: underline;
+    margin-bottom: 0px;
+    margin-top: -10px;
 }
 
 button {
+    margin-top: 20px;
     border-radius: 10px;
+}
+
+#deceased {
+    width: 350px;
+    margin-top: -670px;
+    margin-left: -24px;
+    transform: rotate(340deg);
+}
+
+#statLabels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#statAmounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -10px;
+}
+
+#playButton {
+    display: block;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#description {
+    height: 90px;
+    font-size: 11px;
+    padding-top: 10px;
+}
+
+#cardLine {
+    margin-top: 40px;
+    margin-bottom: 2px;
+}
+
+#cardsDisplay {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+}
+
+#star {
+    width: 40px;
+    float: right;
+}
+
+#topRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

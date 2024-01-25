@@ -14,46 +14,60 @@
   @using Tamagotchi.Models;
 
   <h1>Tamagotchis!</h1>
+  <div id="cardsDisplay">
 
-  @if (Model.Count == 0)
-  {
-    <p>There are no pets to display.</p>
-  }
-  @foreach (Pet pet in Model)
-  {
-    <div class="petCard">
-      <div id="nameAndStats">
+    @if (Model.Count == 0)
+    {
+      <p>There are no pets to display.</p>
+    }
+    @foreach (Pet pet in Model)
+    {
+      <div class="petCard">
+        <div id="topRow">
         <h2 class="petName">@pet.Name</h2>
-        <ul>
-          <li>Happiness: @pet.Happiness</li>
-          <li>Hunger: @pet.Hunger</li>
-          <li>Energy: @pet.Energy</li>
-        </ul>
-        <button><a href="/pets/@pet.Id">Play with Me!</a></button>
-      </div>
-      <div id="picAndStatus">
+        <a href="/pets/@pet.Id"><img id="star" src="~/images/star.png" alt="star icon"></a>
+        </div>
+
         <img class="tamagotchiImage" src="~/images/tama.svg" alt="tamagotchi" style="background-color: @pet.Color;" />
+        <div id="description">
+          <p>@pet.PersonalityDescriptionName</p>
+          <p>@pet.PersonalityDescription</p>
+        </div>
+        
+        <hr id="cardLine">
+        <div id="statLabels">
+          <p>Happiness</p>
+          <p>Hunger</p>
+          <p>Energy</p>
+        </div>
+        <div id="statAmounts">
+          <p>@pet.Happiness</p>
+          <p>@pet.Hunger</p>
+          <p>@pet.Energy</p>
+        </div>
+
+
         @if (pet.Happiness == 0 || pet.Hunger == 10 || pet.Energy == 0)
         {
-            <p>I am dead.
-            YOU LET ME DIE!!!!</p>
+          <img src="~/images/deceased.png" alt="deceased" id="deceased" />
         }
-      </div>
-      <br>
-    </div>
 
-  }
-  <button><a href="/pets/new">Add a new pet.</a></button>
+        <br>
+      </div>
+
+    }
+  </div>
+  </div>
+  <button><a href="/pets/new">Create a new pet</a></button>
   <button><a href='/'>Home Page</a></button>
 
   <form id="timeForm" action="/pets/passTime" method="post">
   </form>
-  </div>
-   <script>
-    // Set up an interval to submit the form every 10 seconds
+
+  <script>
     setInterval(function () {
       document.getElementById('timeForm').submit();
-    }, 10000); // 10000 milliseconds = 10 seconds
+    }, 10000);
   </script>
 </body>
 

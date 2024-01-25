@@ -22,9 +22,12 @@ namespace Tamagotchi.Controllers
     }
 
     [HttpPost("/pets")]
-    public ActionResult Create(string name, string color)
+    public ActionResult Create(string name, string color, string personality)
     {
-      Pet myTamagotchi = new Pet(name, color, 10, 0, 10, true);
+      Pet myTamagotchi = new Pet(name, color, personality, 10, 0, 10, true);
+      int personalityValue = myTamagotchi.GetPersonalityValue();
+      string personalityDescription = myTamagotchi.PersonalityDescription;
+      string descriptionName = myTamagotchi.PersonalityDescriptionName;
       return RedirectToAction("Index");
     }
 
