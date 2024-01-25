@@ -97,3 +97,8 @@ button {
     flex-direction: row;
     justify-content: space-between;
 }
+
+#subtype {
+    font-style: italic;
+    font-size: 13px;
+}
