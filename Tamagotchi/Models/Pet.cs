@@ -16,7 +16,7 @@ namespace Tamagotchi.Models
 
         public bool IsAlive { get; set; }
 
-        public int Id { get; }
+        public int PetId { get; }
         private static List<Pet> _instances = new() { };
 
         public Pet(string name, string color, string personality, int happiness, int hunger, int energy, bool isAlive)
@@ -29,7 +29,7 @@ namespace Tamagotchi.Models
             Energy = energy;
             IsAlive = isAlive;
             _instances.Add(this);
-            Id = _instances.Count;
+            PetId = _instances.Count;
 
             PersonalityValue = GetPersonalityValue();
         }
@@ -84,19 +84,19 @@ namespace Tamagotchi.Models
             }
         }
 
-        public static List<Pet> GetAll()
-        {
-            return _instances;
-        }
+        // public static List<Pet> GetAll()
+        // {
+        //     return _instances;
+        // }
         public static void ClearAll()
         {
             _instances.Clear();
         }
 
-        public static Pet Find(int searchID)
-        {
-            return _instances[searchID - 1];
-        }
+        // public static Pet Find(int searchID)
+        // {
+        //     return _instances[searchID - 1];
+        // }
 
         public string PersonalityDescriptionName { get; private set; }
         public string PersonalityDescription { get; private set; }

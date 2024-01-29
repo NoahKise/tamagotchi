@@ -1,18 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
 using Tamagotchi.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Tamagotchi.Controllers
 {
   public class TamagotchisController : Controller
   {
 
-    [HttpGet("/pets")]
+    // [HttpGet("/pets")]
+    // public ActionResult Index()
+    // {
+
+    //   List<Pet> allTamagotchis = Pet.GetAll();
+    //   return View(allTamagotchis);
+    // }
+
+    private readonly TamagotchiContext _db;
+
+    public TamagotchisController(TamagotchiContext db)
+    {
+      _db = db;
+    }
+
     public ActionResult Index()
     {
-
-      List<Pet> allTamagotchis = Pet.GetAll();
-      return View(allTamagotchis);
+      List<Pet> model = _db.Pets.ToList();
+      return View(model);
     }
 
     [HttpGet("/pets/new")]
@@ -31,52 +45,52 @@ namespace Tamagotchi.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/pets/{id}")]
-    public ActionResult Details(int id)
-    {
-      Pet foundPet = Pet.Find(id);
-      return View(foundPet);
-    }
+    // [HttpGet("/pets/{id}")]
+    // public ActionResult Details(int id)
+    // {
+    //   Pet foundPet = Pet.Find(id);
+    //   return View(foundPet);
+    // }
 
-    [HttpPost("/pets/{id}")]
-    public ActionResult HandlePetAction(int id, string action)
-    {
-      Pet pet = Pet.Find(id);
+    // [HttpPost("/pets/{id}")]
+    // public ActionResult HandlePetAction(int id, string action)
+    // {
+    //   Pet pet = Pet.Find(PetId);
 
-      if (pet == null)
-      {
-        return NotFound();
-      }
+    //   if (pet == null)
+    //   {
+    //     return NotFound();
+    //   }
 
-      switch (action)
-      {
-        case "attention":
-          pet.Attention();
-          break;
-        case "feed":
-          pet.Feed();
-          break;
-        case "rest":
-          pet.Rest();
-          break;
+    //   switch (action)
+    //   {
+    //     case "attention":
+    //       pet.Attention();
+    //       break;
+    //     case "feed":
+    //       pet.Feed();
+    //       break;
+    //     case "rest":
+    //       pet.Rest();
+    //       break;
 
-        default:
-          return BadRequest("Invalid action");
-      }
+    //     default:
+    //       return BadRequest("Invalid action");
+    //   }
 
-      return RedirectToAction("Details", new { id = pet.Id });
-    }
+    //   return RedirectToAction("Details", new { id = pet.PetId });
+    // }
 
-    [HttpPost("/pets/passTime")]
-    public ActionResult PassTime()
-    {
-      Pet firstPet = Pet.GetAll()[0];
-      if (firstPet != null)
-      {
-        firstPet.passTime();
-      }
-      return RedirectToAction("Index");
-    }
+    // [HttpPost("/pets/passTime")]
+    // public ActionResult PassTime()
+    // {
+    //   Pet firstPet = Pet.GetAll()[0];
+    //   if (firstPet != null)
+    //   {
+    //     firstPet.passTime();
+    //   }
+    //   return RedirectToAction("Index");
+    // }
 
   }
 }
